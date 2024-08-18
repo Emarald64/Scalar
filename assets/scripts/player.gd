@@ -24,3 +24,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	area.queue_free()
+	get_viewport().unresizable=false
+	get_parent().get_node("Camera2D").add_child(preload("res://scenes/scale_popup.tscn").instantiate())
