@@ -29,4 +29,12 @@ func _physics_process(delta: float) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	area.queue_free()
 	get_viewport().unresizable=false
-	get_parent().get_node("Camera2D").add_child(preload("res://scenes/scale_popup.tscn").instantiate())
+	var popup=preload("res://scenes/scale_popup.tscn").instantiate()
+	popup.get_node("Button").pressed.connect(close_popup.bind(popup))
+	get_parent().get_node("UI").add_child(popup)
+	get_tree().paused = true
+
+#Alex's jank as heck solution because I didn't feel like giving the popup a script
+func close_popup(popup: Node) -> void:
+	popup.queue_free()
+	get_tree().paused = false

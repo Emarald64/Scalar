@@ -19,5 +19,5 @@ func _process(delta: float) -> void:
 	
 	$Player.scale=Vector2.ONE/(min(scale.x,scale.y)**2)
 	$Player.speed=500/min(scale.x,scale.y)
-	$Player.jump_velocity=-500/min(scale.x,scale.y)
+	$Player.jump_velocity=-650/min(scale.x,scale.y)
 	$Camera2D.zoom=Vector2.ONE*min(scale.x,scale.y)
