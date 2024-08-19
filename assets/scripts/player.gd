@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var speed = 500.0
 var jump_velocity = -900.0
-
+var force=10000
 
 
 func _physics_process(delta: float) -> void:
@@ -19,7 +19,12 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	velocity.x= lerp(velocity.x,direction*speed,(15 if is_on_floor() else 5) * delta)
 
-	move_and_slide()
+	if move_and_slide(): # true if collided
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				print('hit a box')
+				col.get_collider().apply_force(col.get_normal() * -force)
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
