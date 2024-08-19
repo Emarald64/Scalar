@@ -14,7 +14,7 @@ position = Vector2(-1750, 1920)
 
 [node name="Player" parent="." instance=ExtResource("2_8a0gj")]
 unique_name_in_owner = true
-position = Vector2(-1504, -672)
+position = Vector2(136, 152)
 floor_stop_on_slope = false
 floor_snap_length = 10.0
 
@@ -26,7 +26,7 @@ update_scale = false
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1504, -672)
+position = Vector2(136, 152)
 zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
