@@ -440,7 +440,7 @@ tile_map_data = PackedByteArray("AAAFAAQAAAAEAAMAAAAEAAQAAAAEAAMAAAADAAQAAAAEAAM
 tile_set = SubResource("TileSet_k8fw7")
 
 [node name="Player" parent="." instance=ExtResource("2_8a0gj")]
-position = Vector2(2264, 56)
+position = Vector2(168, 88)
 floor_stop_on_slope = false
 floor_snap_length = 10.0
 
@@ -450,7 +450,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2264, 56)
+position = Vector2(168, 88)
 zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
