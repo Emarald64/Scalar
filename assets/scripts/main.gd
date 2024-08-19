@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var window=get_viewport()
-
+@onready var player=$Player
 #@onready var PreviousSize = window.size
 #@onready var defaultSize = Vector2(window.size)
 var screenSize = Vector2(DisplayServer.screen_get_usable_rect().size)

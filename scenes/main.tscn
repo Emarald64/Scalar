@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://du2qjeiyvf34a"]
+[gd_scene load_steps=12 format=4 uid="uid://du2qjeiyvf34a"]
 
 [ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_dpl3l"]
 [ext_resource type="Texture2D" uid="uid://wq0aksxybphe" path="res://assets/tileset/part1.svg" id="1_gxeaa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm605ac0vmqii" path="res://assets/Controls.png" id="5_n65vw"]
 [ext_resource type="PackedScene" uid="uid://ds2l2kjmrnhhr" path="res://scenes/box.tscn" id="7_o7lbx"]
 [ext_resource type="PackedScene" uid="uid://bkgl318o6joym" path="res://scenes/button.tscn" id="8_fntki"]
+[ext_resource type="PackedScene" uid="uid://bammpmc8lfif" path="res://scenes/reset_box.tscn" id="9_fgqrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mwy0u"]
 texture = ExtResource("1_gxeaa")
@@ -550,5 +551,9 @@ position = Vector2(2456, 160)
 [node name="Button" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_fntki")]
 position = Vector2(2752, 192)
 target = NodePath("../Door")
+
+[node name="reset box" parent="." instance=ExtResource("9_fgqrx")]
+position = Vector2(2688, 56)
+scale = Vector2(45, 15)
 
 [connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
