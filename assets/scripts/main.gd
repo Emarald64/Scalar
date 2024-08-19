@@ -13,7 +13,7 @@ var screenSize = Vector2(DisplayServer.screen_get_usable_rect().size)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	window.size=screenSize/1.5
-	$AnimatedSprite2D.play()
+	$Part1/AnimatedSprite2D.play()
 
 
 
