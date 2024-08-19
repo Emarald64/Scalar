@@ -54,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Allows you to change the size of the window.
 
-When the window is resized the wold will chage scale but the player will not."
+When the window is resized the wold will change scale but the player will not."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]

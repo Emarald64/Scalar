@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://assets/scripts/reset_box.gd" id="1_dccff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jhiv"]
+size = Vector2(24, 17.4667)
 
 [node name="reset box" type="Area2D"]
 collision_layer = 0

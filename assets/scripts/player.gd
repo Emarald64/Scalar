@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var speed = 500.0
 var jump_velocity = -900.0
-var force=10000
+var force=200
 
 
 func _physics_process(delta: float) -> void:
@@ -22,8 +22,8 @@ func _physics_process(delta: float) -> void:
 	if move_and_slide() and is_on_floor(): # true if collided
 		for i in get_slide_collision_count():
 			var col = get_slide_collision(i)
-			if col.get_collider() is RigidBody2D:
-				col.get_collider().apply_force(col.get_normal() * -force)
+			if col.get_collider() is CharacterBody2D:
+				col.get_collider().velocity=(col.get_normal() * -force)
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
