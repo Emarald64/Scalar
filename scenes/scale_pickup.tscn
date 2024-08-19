@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp5b6p8f5n3aq"]
+
+[ext_resource type="PackedScene" uid="uid://e7jo4sgfpfue" path="res://scenes/base pickup.tscn" id="1_jehne"]
+[ext_resource type="Texture2D" uid="uid://bd4t2whsleqaq" path="res://assets/Scale.png" id="2_iiq1j"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2x20e"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+
+[sub_resource type="Gradient" id="Gradient_yxqsp"]
+offsets = PackedFloat32Array(0, 0.208038, 0.725768)
+colors = PackedColorArray(0, 1, 1, 0.501961, 0, 1, 1, 0.501961, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5444o"]
+gradient = SubResource("Gradient_yxqsp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="Scale Pickup" instance=ExtResource("1_jehne")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_iiq1j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_2x20e")
+texture = SubResource("GradientTexture2D_5444o")
+preprocess = 1.0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://e7jo4sgfpfue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4qdv"]
+size = Vector2(26, 20)
+
+[node name="Base Pickup" type="Area2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 0
+metadata/pickup = "scale"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p4qdv")

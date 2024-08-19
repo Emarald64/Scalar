@@ -28,11 +28,16 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	area.queue_free()
-	get_viewport().unresizable=false
-	var popup=preload("res://scenes/scale_popup.tscn").instantiate()
-	popup.get_node("Button").pressed.connect(close_popup.bind(popup))
-	get_parent().get_node("UI").add_child(popup)
-	get_tree().paused = true
+	var type=area.get_meta('pickup','none')
+	if type=='scale':
+		get_viewport().unresizable=false
+		var popup=preload("res://scenes/scale_popup.tscn").instantiate()
+		popup.get_node("Button").pressed.connect(close_popup.bind(popup))
+		get_parent().get_node("UI").add_child(popup)
+		get_tree().paused = true
+	elif type=='spring':
+		get_parent().base_jump*=1.01
+		get_parent().get_node("Label2").text='You can now jump 1% heigher\n you are welcome'
 
 #Alex's jank as heck solution because I didn't feel like giving the popup a script
 func close_popup(popup: Node) -> void:

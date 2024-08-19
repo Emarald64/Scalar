@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://36ur5ri6gfr5"]
+
+[ext_resource type="PackedScene" uid="uid://e7jo4sgfpfue" path="res://scenes/base pickup.tscn" id="1_3plmt"]
+[ext_resource type="Texture2D" uid="uid://b85q351sgoqve" path="res://assets/spring.png" id="2_gg4dk"]
+
+[node name="Spring Pickup" instance=ExtResource("1_3plmt")]
+metadata/pickup = "spring"
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gg4dk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2.5, 3)
