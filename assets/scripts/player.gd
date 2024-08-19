@@ -19,11 +19,10 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	velocity.x= lerp(velocity.x,direction*speed,(15 if is_on_floor() else 5) * delta)
 
-	if move_and_slide(): # true if collided
+	if move_and_slide() and is_on_floor(): # true if collided
 		for i in get_slide_collision_count():
 			var col = get_slide_collision(i)
 			if col.get_collider() is RigidBody2D:
-				print('hit a box')
 				col.get_collider().apply_force(col.get_normal() * -force)
 
 

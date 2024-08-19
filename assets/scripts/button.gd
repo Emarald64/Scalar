@@ -9,10 +9,12 @@ var on=false
 func _process(delta: float) -> void:
 	if has_overlapping_bodies() and not on:
 		target.on()
+		on=true
 		$Sprite2D.texture=preload("res://assets/Button_0002.png")
 		print('on')
 	elif not has_overlapping_bodies() and on:
 		target.off()
+		on=false
 		$Sprite2D.texture=preload("res://assets/Button_0001.png")
 		print('off')
 
