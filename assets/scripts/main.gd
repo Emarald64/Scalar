@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var window=get_viewport()
 @onready var player=$Player
-var base_jump=650
+var base_jump=6500
 @onready var PreviousSize = window.size
 #@onready var defaultSize = Vector2(window.size)
 var screenSize = Vector2(DisplayServer.screen_get_usable_rect().size)
@@ -12,6 +12,7 @@ var screenSize = Vector2(DisplayServer.screen_get_usable_rect().size)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Engine.time_scale=1
 	window.size=screenSize/1.5
 	$Part1/AnimatedSprite2D.play()
 
@@ -28,5 +29,5 @@ func _process(delta: float) -> void:
 		$Camera2D.zoom=Vector2.ONE*min(windowScale.x,windowScale.y)
 		PreviousSize = window.size
 	else:
-		print(get_node("Player/Hitbox").get_overlapping_bodies()[0].name)
+		#print(get_node("Player/Hitbox").get_overlapping_bodies()[0].name)
 		window.size =PreviousSize

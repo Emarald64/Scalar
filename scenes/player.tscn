@@ -1,7 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq6sx666wns7p"]
+[gd_scene load_steps=14 format=3 uid="uid://bq6sx666wns7p"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_5hkty"]
-[ext_resource type="Texture2D" uid="uid://bjt3iak3gk1ht" path="res://icon.svg" id="2_w17ci"]
+[ext_resource type="Texture2D" uid="uid://dixhkigqa74a7" path="res://assets/player.png" id="2_vemdt"]
+[ext_resource type="Texture2D" uid="uid://ck05cfp8gu5na" path="res://assets/eyes.png" id="3_kdlbo"]
+[ext_resource type="AudioStream" uid="uid://bgbqlxruqih3e" path="res://assets/jump.wav" id="3_no726"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llg7f"]
+atlas = ExtResource("2_vemdt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fypgl"]
+atlas = ExtResource("2_vemdt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l60dy"]
+atlas = ExtResource("2_vemdt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmqmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llg7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fypgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l60dy")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cpaw"]
+atlas = ExtResource("3_kdlbo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt0qp"]
+atlas = ExtResource("3_kdlbo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3n88a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cpaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt0qp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avmra"]
 size = Vector2(64, 64)
@@ -13,9 +66,17 @@ size = Vector2(70, 61)
 collision_layer = 12
 script = ExtResource("1_5hkty")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_w17ci")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.90735e-06, -4.5)
+scale = Vector2(2.28, 2.28)
+sprite_frames = SubResource("SpriteFrames_vmqmh")
+animation = &"jump"
+
+[node name="Eyes" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_3n88a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_avmra")
@@ -27,5 +88,14 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_dqwm6")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_no726")
+
+[node name="BlinkTimer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

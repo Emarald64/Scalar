@@ -9,7 +9,7 @@ var saved={}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("reset") and get_parent().player in get_overlapping_bodies():
+	if Input.is_action_just_pressed("reset") and get_parent().get_parent().player in get_overlapping_bodies():
 		for object in get_overlapping_bodies():
 			if object.name in saved:
 				#if object is RigidBody2D:object.custom_integrator=true
