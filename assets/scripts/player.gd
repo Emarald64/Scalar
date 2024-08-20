@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	elif velocity.y<-200:$Eyes.position.y=-5
 	else:$Eyes.position.y=0
 
-	print(velocity.y)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -55,6 +54,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		popup.get_node("Button").pressed.connect(close_popup.bind(popup))
 		get_parent().get_node("UI").add_child(popup)
 		get_tree().paused = true
+		get_parent().get_node('Part1/HintTimer').start()
 	elif type=='spring':
 		get_parent().base_jump*=1.01
 		get_parent().get_node("Part1/Label2").text='You can now jump 1% heigher\n you are welcome'

@@ -14,7 +14,6 @@ var screenSize = Vector2(DisplayServer.screen_get_usable_rect().size)
 func _ready() -> void:
 	Engine.time_scale=1
 	window.size=screenSize/1.5
-	$Part1/AnimatedSprite2D.play()
 
 
 

@@ -1,16 +1,13 @@
-[gd_scene load_steps=28 format=4 uid="uid://bd8afkd6cugak"]
+[gd_scene load_steps=24 format=4 uid="uid://bd8afkd6cugak"]
 
 [ext_resource type="Texture2D" uid="uid://cdw41p2c62t06" path="res://assets/arrow.png" id="1_2bmkj"]
 [ext_resource type="PackedScene" uid="uid://cc3q7qditc50s" path="res://scenes/transition.tscn" id="1_p4qfm"]
+[ext_resource type="Script" path="res://assets/scripts/part_1.gd" id="1_xqgaj"]
 [ext_resource type="Texture2D" uid="uid://bgllongbuihpe" path="res://assets/reset.png" id="2_hxt4l"]
-[ext_resource type="PackedScene" uid="uid://bp84256nkqefp" path="res://scenes/door.tscn" id="3_ymab4"]
 [ext_resource type="Texture2D" uid="uid://dm605ac0vmqii" path="res://assets/Controls.png" id="4_xk4ud"]
 [ext_resource type="Texture2D" uid="uid://wq0aksxybphe" path="res://assets/tileset/part1.svg" id="5_rgj6q"]
 [ext_resource type="Texture2D" uid="uid://bmp2ahhsxk6rm" path="res://assets/tileset/Bottom half.png" id="6_f0uog"]
 [ext_resource type="Texture2D" uid="uid://d0kwgengov752" path="res://assets/tileset/Top Half.png" id="7_ox0hs"]
-[ext_resource type="PackedScene" uid="uid://ds2l2kjmrnhhr" path="res://scenes/box.tscn" id="8_t3oe4"]
-[ext_resource type="PackedScene" uid="uid://bkgl318o6joym" path="res://scenes/button.tscn" id="9_6st0c"]
-[ext_resource type="Script" path="res://assets/scripts/reset_box.gd" id="10_grg6j"]
 [ext_resource type="PackedScene" uid="uid://dp5b6p8f5n3aq" path="res://scenes/scale_pickup.tscn" id="11_wmnot"]
 [ext_resource type="PackedScene" uid="uid://36ur5ri6gfr5" path="res://scenes/spring_pickup.tscn" id="12_hmxlx"]
 
@@ -585,10 +582,8 @@ sources/0 = SubResource("TileSetAtlasSource_mwy0u")
 sources/1 = SubResource("TileSetAtlasSource_64ruu")
 sources/2 = SubResource("TileSetAtlasSource_et8d8")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jhiv"]
-size = Vector2(24, 17.4667)
-
 [node name="Part1" type="Node2D"]
+script = ExtResource("1_xqgaj")
 
 [node name="Transition" parent="." instance=ExtResource("1_p4qfm")]
 position = Vector2(-1672, 1344)
@@ -611,12 +606,7 @@ position = Vector2(2592, -80)
 scale = Vector2(4, 4)
 texture = ExtResource("2_hxt4l")
 
-[node name="Door" parent="." instance=ExtResource("3_ymab4")]
-visible = false
-position = Vector2(3192, 88)
-scale = Vector2(8, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Controlls" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(168, 0)
 scale = Vector2(4, 4)
@@ -627,31 +617,11 @@ tile_map_data = PackedByteArray("AAAFAAQAAAAFAAMAAAAEAAQAAAAFAAMAAAADAAQAAAAFAAM
 tile_set = SubResource("TileSet_k8fw7")
 metadata/_edit_lock_ = true
 
-[node name="box" parent="." instance=ExtResource("8_t3oe4")]
-visible = false
-position = Vector2(2456, 160)
-
-[node name="Button" parent="." node_paths=PackedStringArray("target") instance=ExtResource("9_6st0c")]
-visible = false
-position = Vector2(2752, 192)
-target = NodePath("../Door")
-
-[node name="reset box" type="Area2D" parent="."]
-position = Vector2(2736, 56)
-scale = Vector2(40, 15)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("10_grg6j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="reset box"]
-position = Vector2(-2, 1.26667)
-shape = SubResource("RectangleShape2D_2jhiv")
-
 [node name="Label" type="Label" parent="."]
 offset_left = -1632.0
-offset_top = 1280.0
+offset_top = 1688.0
 offset_right = -1359.0
-offset_bottom = 1324.0
+offset_bottom = 1732.0
 theme_override_font_sizes/font_size = 31
 text = "Get Trolled Samik!"
 
@@ -671,6 +641,18 @@ scale = Vector2(4, 4)
 [node name="Spring Pickup" parent="." instance=ExtResource("12_hmxlx")]
 position = Vector2(-2664, -784)
 
-[connection signal="body_entered" from="reset box" to="reset box" method="_on_body_entered"]
+[node name="Label3" type="Label" parent="."]
+visible = false
+offset_left = -144.0
+offset_top = 80.0
+offset_right = 99.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 20
+text = "Try shrinking the game window"
+
+[node name="HintTimer" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="timeout" from="HintTimer" to="." method="_on_hint_timer_timeout"]
 
 [editable path="Transition"]

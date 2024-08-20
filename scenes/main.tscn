@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_dpl3l"]
 [ext_resource type="PackedScene" uid="uid://bq6sx666wns7p" path="res://scenes/player.tscn" id="2_8a0gj"]
-[ext_resource type="PackedScene" uid="uid://bd8afkd6cugak" path="res://scenes/part_1.tscn" id="3_obqkn"]
+[ext_resource type="PackedScene" uid="uid://bd8afkd6cugak" path="res://scenes/part_1.tscn" id="2_yx6wm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dpl3l")
 
-[node name="Part1" parent="." instance=ExtResource("3_obqkn")]
+[node name="Part1" parent="." instance=ExtResource("2_yx6wm")]
 
 [node name="Part2" parent="." instance_placeholder="res://scenes/part_2.tscn"]
 position = Vector2(-1750, 1920)
 
 [node name="Player" parent="." instance=ExtResource("2_8a0gj")]
 unique_name_in_owner = true
-position = Vector2(136, 152)
+position = Vector2(128, 128)
 floor_stop_on_slope = false
 floor_snap_length = 10.0
 
@@ -26,7 +26,8 @@ update_scale = false
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(136, 152)
+position = Vector2(128, 128)
 zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+drag_horizontal_offset = 1.0
