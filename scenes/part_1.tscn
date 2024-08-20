@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://bd8afkd6cugak"]
+[gd_scene load_steps=23 format=4 uid="uid://bd8afkd6cugak"]
 
 [ext_resource type="Texture2D" uid="uid://cdw41p2c62t06" path="res://assets/arrow.png" id="1_2bmkj"]
 [ext_resource type="PackedScene" uid="uid://cc3q7qditc50s" path="res://scenes/transition.tscn" id="1_p4qfm"]
 [ext_resource type="Script" path="res://assets/scripts/part_1.gd" id="1_xqgaj"]
-[ext_resource type="Texture2D" uid="uid://bgllongbuihpe" path="res://assets/reset.png" id="2_hxt4l"]
 [ext_resource type="Texture2D" uid="uid://dm605ac0vmqii" path="res://assets/Controls.png" id="4_xk4ud"]
 [ext_resource type="Texture2D" uid="uid://wq0aksxybphe" path="res://assets/tileset/part1.svg" id="5_rgj6q"]
 [ext_resource type="Texture2D" uid="uid://bmp2ahhsxk6rm" path="res://assets/tileset/Bottom half.png" id="6_f0uog"]
@@ -598,13 +597,6 @@ texture_filter = 1
 position = Vector2(1895, -314)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_lb6t1")
-
-[node name="Reset" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(2592, -80)
-scale = Vector2(4, 4)
-texture = ExtResource("2_hxt4l")
 
 [node name="Controlls" type="Sprite2D" parent="."]
 texture_filter = 1
